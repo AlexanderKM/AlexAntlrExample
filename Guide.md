@@ -79,7 +79,7 @@ The interesting line is `ParseTree tree = cparser.compilationUnit();`
 The method `compialtionUnit` was created by antlr, and calling this on the parser
 tells the parser to start at the rule `compilationUnit` within the grammar. 
 If you need to start at a different rule, call that on the parser. For example,
- if we wanted to star with the "argumentExpressionList" rule from the C grammar, 
+ if we wanted to start with the "argumentExpressionList" rule from the C grammar, 
  we would call `ParseTree tree = cparser.argumentExpressionList();`
  
 ##  USING the plugin view
