@@ -1,12 +1,12 @@
-Need to install the intellij plugin at https://plugins.jetbrains.com/plugin/7358?pr=
+# Using Antlr with IntelliJ
 
-Scroll down to downloads and download the newest one.
+First we need to install the intellij plugin located at https://plugins.jetbrains.com/plugin/7358?pr=
 
-In intellij go to Settings > Plugins > Install plugin from disk
+Scroll down to the downloads and download the newest one.
 
-And select the zip file you downloaded.
+In intellij go to Settings > Plugins > Install plugin from disk, and select the zip file you downloaded.
 
-Now to edit our pom
+## Now to edit our pom
 
 Add the antlr runtime dependency: 
 
@@ -40,7 +40,11 @@ For the build:
     </plugins>
 </build>
 ```
+
+You can see the full pom.xml within this project.
         
+## Get the project started
+
 Create a new directory at `src/main/antlr4/pack` and place your grammar in there.
 
 Create a main class in `src/main/[your.package]`
@@ -49,19 +53,26 @@ I created AlexMain.java under `src/main/com/alex`
 
 In Intellij, do Build > Make Project.
 
+## Configuring Antlr
 
 Right click on your grammar file and click "Configure ANTLR..."
 
+![rightantlr](docphotos/rightclickantlr.PNG)
+
 And configure it like so:
 
+![configure](docphotos/configureantlr.PNG)
+
 Then right click your grammar again and select "Generate ANTLR Recognizer"
+
+![generate](docphotos/generateantlr.PNG)
 
 This will produce a lot of java classes in the directory that you specified for output.
 In this case, `target/generated-sources/com/alex`
 
 We can now use these classes in our original main class to get started.
 
-Take a look at the main class to actually see the code.
+Take a look at the main class (AlexMain.java) to actually see the code.
 
 The interesting line is `ParseTree tree = cparser.compilationUnit();`
  
@@ -71,14 +82,18 @@ If you need to start at a different rule, call that on the parser. For example,
  if we wanted to star with the "argumentExpressionList" rule from the C grammar, 
  we would call `ParseTree tree = cparser.argumentExpressionList();`
  
-USING the plugin view
+##  USING the plugin view
 
 In Intellij, go to View > Tool Windows > ANTLR preview.
 
 We will pick the file as input, choose the file `mergesort.c` that we were just working with.
 
+![choosefile](docphotos/choosefile.PNG)
+
 Now go into the grammar file (`C.g4`) and right click on the starting rule, `compilationUnit`,
  and click "Test Rule compilationUnit."
+ 
+![testrule](docphotos/testrule.PNG)
  
 You should now see a visualization of the tree in the antlr tool window.
 
