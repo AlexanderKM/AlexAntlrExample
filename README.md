@@ -1,3 +1,3 @@
 # Alex's Antlr Example
 
-Check out the guide to using Antlr with IntelliJ: [Guide](https://github.com/AlexanderKM/AlexAntlrExample/blob/master/Guide.md)
+[Check out a guide to using Antlr with IntelliJ](https://github.com/AlexanderKM/AlexAntlrExample/blob/master/Guide.md)
