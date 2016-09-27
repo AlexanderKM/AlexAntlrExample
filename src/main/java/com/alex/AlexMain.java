@@ -3,6 +3,7 @@ package com.alex;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,7 +29,9 @@ public class AlexMain {
 
       ParseTree tree = cparser.compilationUnit();
 
-      System.out.println(tree.toStringTree(cparser));
+      ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
+      MyCListener myListener = new MyCListener(cparser);
+      walker.walk(myListener, tree); // initiate walk of tree with listener
 
       fis.close();
 
