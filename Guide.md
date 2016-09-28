@@ -61,7 +61,7 @@ Right click on your grammar file and click "Configure ANTLR..."
 
 And configure it like so:
 
-![configure](docphotos/configureantlr.PNG)
+![configure](docphotos/configureantlr2.PNG)
 
 Then right click your grammar again and select "Generate ANTLR Recognizer"
 
