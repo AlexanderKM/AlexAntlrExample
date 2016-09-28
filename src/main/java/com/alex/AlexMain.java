@@ -33,6 +33,11 @@ public class AlexMain {
       MyCListener myListener = new MyCListener(cparser);
       walker.walk(myListener, tree); // initiate walk of tree with listener
 
+      System.out.println();
+      System.out.println("Visiting things... ");
+      MyCVisitor visitor = new MyCVisitor();
+      visitor.visit(tree);
+
       fis.close();
 
     } catch (FileNotFoundException fnfe) {
