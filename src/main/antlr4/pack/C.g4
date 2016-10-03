@@ -55,17 +55,17 @@ genericAssociation
     ;
 
 postfixExpression
-    :   primaryExpression
-    |   postfixExpression '[' expression ']'
-    |   postfixExpression '(' argumentExpressionList? ')'
-    |   postfixExpression '.' Identifier
-    |   postfixExpression '->' Identifier
-    |   postfixExpression '++'
-    |   postfixExpression '--'
-    |   '(' typeName ')' '{' initializerList '}'
-    |   '(' typeName ')' '{' initializerList ',' '}'
-    |   '__extension__' '(' typeName ')' '{' initializerList '}'
-    |   '__extension__' '(' typeName ')' '{' initializerList ',' '}'
+    :   primaryExpression #postfixPrimary
+    |   postfixExpression '[' expression ']' #postfixExpressionExpression
+    |   postfixExpression '(' argumentExpressionList? ')' #postfixArgumentExpressionList
+    |   postfixExpression '.' Identifier #postfixDotIdentifier
+    |   postfixExpression '->' Identifier #postfixArrowIdentifier
+    |   postfixExpression '++' #postfixPlusPlus
+    |   postfixExpression '--' #postfixMinusMinus
+    |   '(' typeName ')' '{' initializerList '}' #postfixInitializerListFirst
+    |   '(' typeName ')' '{' initializerList ',' '}' #postfixInitializerListSecond
+    |   '__extension__' '(' typeName ')' '{' initializerList '}' #postfixExtensionFirst
+    |   '__extension__' '(' typeName ')' '{' initializerList ',' '}' #postfixExtensionSecond
     ;
 
 argumentExpressionList

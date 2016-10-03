@@ -8,6 +8,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class AlexMain {
 
@@ -34,15 +35,21 @@ public class AlexMain {
       walker.walk(myListener, tree); // initiate walk of tree with listener
 
       System.out.println();
+      /*
       System.out.println("Visiting things... ");
       MyCVisitor visitor = new MyCVisitor();
       visitor.visit(tree);
+      */
+
+      System.out.println();
+      System.out.println("Function definition count: " + myListener.getFunctionDefinitionCount());
+      myListener.printFunctionCallCounts();
 
       fis.close();
 
     } catch (FileNotFoundException fnfe) {
       fnfe.printStackTrace();
-    } catch (Exception e) {
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }
