@@ -2,11 +2,14 @@ package com.alex;
 
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class MyCListener extends CBaseListener {
 
   private int functionDefinitionCount = 0;
+  private Set<String> functionNames;
   private Map<String, Integer> functionToCount;
 
 
@@ -15,19 +18,12 @@ public class MyCListener extends CBaseListener {
   public MyCListener(CParser cParser) {
     this.cParser = cParser;
     this.functionToCount = new HashMap<>();
+    this.functionNames = new HashSet<>();
   }
 
   @Override
   public void enterFunctionDefinition(CParser.FunctionDefinitionContext ctx) {
-    /**
-     * All of this is dependent on the rules in the grammar
-     */
-    /*
-    System.out.println("Entering Function definition: { " );
-    TokenStream tokens = cParser.getTokenStream();
-    System.out.println("Declaration specifiers: ");
-    System.out.println(ctx.declarationSpecifiers().getText());
-    */
+    functionNames.add(ctx.declarator().getText());
     functionDefinitionCount++;
   }
 
@@ -65,14 +61,17 @@ public class MyCListener extends CBaseListener {
     return functionDefinitionCount;
   }
 
-  public Map<String, Integer> getFunctionCallCounts() {
-    return functionToCount;
-  }
-
   public void printFunctionCallCounts() {
     System.out.println("Counts of function calls: ");
     for (Map.Entry<String, Integer> entry : functionToCount.entrySet()) {
       System.out.println("" + entry.getKey() + " : " + entry.getValue());
+    }
+  }
+
+  public void printFunctionDefinitions() {
+    System.out.println("Function names: ");
+    for (String name : functionNames) {
+      System.out.println(name);
     }
   }
 

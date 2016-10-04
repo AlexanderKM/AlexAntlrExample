@@ -41,8 +41,10 @@ public class AlexMain {
       visitor.visit(tree);
       */
 
-      System.out.println();
       System.out.println("Function definition count: " + myListener.getFunctionDefinitionCount());
+      System.out.println();
+      myListener.printFunctionDefinitions();
+      System.out.println();
       myListener.printFunctionCallCounts();
 
       fis.close();
