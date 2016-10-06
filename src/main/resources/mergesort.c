@@ -1,6 +1,6 @@
 
-// #include <stdio.h>
-// #include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 
 void merge(int *A, int *L, int leftCount, int *R, int rightCount);
